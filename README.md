@@ -1,8 +1,7 @@
 # This is my package metadata
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/marshmallow/metadata.svg?style=flat-square)](https://packagist.org/packages/marshmallow/metadata)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marshmallow/metadata/run-tests?label=tests)](https://github.com/marshmallow/metadata/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/marshmallow/metadata/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/marshmallow/metadata/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/mm-packages/metadata/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/mm-packages/metadata/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/marshmallow/metadata.svg?style=flat-square)](https://packagist.org/packages/marshmallow/metadata)
 
 Add metadata to any model with a simple cast
