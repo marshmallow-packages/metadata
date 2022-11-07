@@ -2,10 +2,9 @@
 
 namespace Marshmallow\Metadata\Models;
 
-use Illuminate\Support\Arr;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class Metadata extends Model
 {
@@ -22,7 +21,7 @@ class Metadata extends Model
 
     protected function getDataArray(): array
     {
-        if (!filled($this->data)) {
+        if (! filled($this->data)) {
             return [];
         }
 
@@ -50,7 +49,7 @@ class Metadata extends Model
     public function getMetadata(string $key)
     {
         $data = $this->getDataArray();
-        if (!array_key_exists($key, $data)) {
+        if (! array_key_exists($key, $data)) {
             return null;
         }
 

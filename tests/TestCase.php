@@ -3,8 +3,8 @@
 namespace Marshmallow\Metadata\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Marshmallow\Metadata\MetadataServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Marshmallow\\Metadata\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Marshmallow\\Metadata\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

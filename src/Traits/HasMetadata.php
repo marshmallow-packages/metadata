@@ -2,17 +2,10 @@
 
 namespace Marshmallow\Metadata\Traits;
 
-use ArrayAccess;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use InvalidArgumentException;
-use Marshmallow\Casts\MetadataCast;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use Marshmallow\Metadata\Models\Metadata;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Marshmallow\Casts\MetadataCast;
+use Marshmallow\Metadata\Models\Metadata;
 
 trait HasMetadata
 {
@@ -73,8 +66,9 @@ trait HasMetadata
     {
         $encoded_value = $this->maybeEncodeMetadataValue($value);
 
-        if (!$this->exists) {
+        if (! $this->exists) {
             $this->queuedMetadata = [$key => $encoded_value];
+
             return;
         }
 
@@ -90,7 +84,7 @@ trait HasMetadata
 
     public function getMetadata($key)
     {
-        if (!in_array($key, $this->getMetadataCasts())) {
+        if (! in_array($key, $this->getMetadataCasts())) {
             return null;
         }
 

@@ -31,12 +31,14 @@ class MetadataCast implements CastsAttributes
      */
     public function set($model, $key, $value, $attributes)
     {
-        if (!$model->exists) {
+        if (! $model->exists) {
             $model->queuedMetadata = [$key => $value];
+
             return;
         }
 
         $model->setMetadata($key, $value);
+
         return $value;
     }
 }
