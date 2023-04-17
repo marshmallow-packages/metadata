@@ -21,7 +21,7 @@ class Metadata extends Model
 
     protected function getDataArray(): array
     {
-        if (! filled($this->data)) {
+        if (!filled($this->data)) {
             return [];
         }
 
@@ -37,7 +37,7 @@ class Metadata extends Model
         $current_data = $this->getDataArray();
         $new_data = array_merge($current_data, [$key => $value]);
 
-        if (empty($value)) {
+        if (!filled($value)) {
             $new_data = Arr::except($new_data, $key);
         }
 
@@ -49,7 +49,7 @@ class Metadata extends Model
     public function getMetadata(string $key)
     {
         $data = $this->getDataArray();
-        if (! array_key_exists($key, $data)) {
+        if (!array_key_exists($key, $data)) {
             return null;
         }
 
