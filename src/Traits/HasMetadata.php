@@ -66,8 +66,8 @@ trait HasMetadata
     {
         $encoded_value = $this->maybeEncodeMetadataValue($value);
 
-        if (! $this->exists) {
-            $this->queuedMetadata = [$key => $encoded_value];
+        if (!$this->exists) {
+            $this->queuedMetadata[$key] = $encoded_value;
 
             return;
         }
@@ -84,7 +84,7 @@ trait HasMetadata
 
     public function getMetadata($key)
     {
-        if (! in_array($key, $this->getMetadataCasts())) {
+        if (!in_array($key, $this->getMetadataCasts())) {
             return null;
         }
 
