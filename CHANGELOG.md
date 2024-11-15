@@ -2,6 +2,10 @@
 
 All notable changes to `metadata` will be documented in this file.
 
+## v1.2.1 - 2024-11-15
+
+**Full Changelog**: https://github.com/marshmallow-packages/metadata/compare/v1.2.0...v1.2.1
+
 ## v1.2.0 - 2024-03-12
 
 **Full Changelog**: https://github.com/marshmallow-packages/metadata/compare/v1.1.2...v1.2.0
