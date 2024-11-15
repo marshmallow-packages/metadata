@@ -2,11 +2,11 @@
 
 namespace Marshmallow\Metadata\Traits;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use Marshmallow\Metadata\Models\Metadata;
-use Marshmallow\Metadata\Casts\MetadataCast;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Facades\DB;
+use Marshmallow\Metadata\Casts\MetadataCast;
+use Marshmallow\Metadata\Models\Metadata;
 
 trait HasMetadata
 {
@@ -50,8 +50,8 @@ trait HasMetadata
     public function getMetadataCasts(): array
     {
         return collect($this->casts)
-            ->filter(fn($cast) => $cast == self::getMetadataCastClassName())
-            ->map(fn($cast, $key) => $key)
+            ->filter(fn ($cast) => $cast == self::getMetadataCastClassName())
+            ->map(fn ($cast, $key) => $key)
             ->toArray();
     }
 
@@ -68,8 +68,9 @@ trait HasMetadata
     {
         $encoded_value = $this->maybeEncodeMetadataValue($value);
 
-        if (!$this->exists) {
+        if (! $this->exists) {
             $this->queuedMetadata[$key] = $encoded_value;
+
             return;
         }
 
