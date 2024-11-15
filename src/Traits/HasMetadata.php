@@ -2,10 +2,11 @@
 
 namespace Marshmallow\Metadata\Traits;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Marshmallow\Casts\MetadataCast;
 use Marshmallow\Metadata\Models\Metadata;
+use Marshmallow\Metadata\Casts\MetadataCast;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasMetadata
 {
@@ -28,11 +29,12 @@ trait HasMetadata
                 return;
             }
 
-            collect($metadatableModel->queuedMetadata)->each(function ($value, $key) use ($metadatableModel) {
-                $metadatableModel->setMetadata($key, $value);
+            DB::afterCommit(function () use ($metadatableModel) {
+                collect($metadatableModel->queuedMetadata)->each(function ($value, $key) use ($metadatableModel) {
+                    $metadatableModel->setMetadata($key, $value);
+                });
+                $metadatableModel->queuedMetadata = [];
             });
-
-            $metadatableModel->queuedMetadata = [];
         });
 
         static::deleted(function (Model $deletedModel) {
@@ -48,8 +50,8 @@ trait HasMetadata
     public function getMetadataCasts(): array
     {
         return collect($this->casts)
-            ->filter(fn ($cast) => $cast == self::getMetadataCastClassName())
-            ->map(fn ($cast, $key) => $key)
+            ->filter(fn($cast) => $cast == self::getMetadataCastClassName())
+            ->map(fn($cast, $key) => $key)
             ->toArray();
     }
 
@@ -66,9 +68,8 @@ trait HasMetadata
     {
         $encoded_value = $this->maybeEncodeMetadataValue($value);
 
-        if (! $this->exists) {
+        if (!$this->exists) {
             $this->queuedMetadata[$key] = $encoded_value;
-
             return;
         }
 
