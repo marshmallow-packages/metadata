@@ -2,6 +2,17 @@
 
 All notable changes to `metadata` will be documented in this file.
 
+## v1.3.0 - 2025-02-08
+
+### What's Changed
+
+* (deps) added support for Laravel 12 by @stefvanesch in https://github.com/marshmallow-packages/metadata/pull/13
+* Bump aglipanci/laravel-pint-action from 1.0.0 to 2.3.0 by @dependabot in https://github.com/marshmallow-packages/metadata/pull/8
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/marshmallow-packages/metadata/pull/10
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/marshmallow-packages/metadata/pull/11
+
+**Full Changelog**: https://github.com/marshmallow-packages/metadata/compare/v1.2.1...v1.3.0
+
 ## v1.2.1 - 2024-11-15
 
 **Full Changelog**: https://github.com/marshmallow-packages/metadata/compare/v1.2.0...v1.2.1
