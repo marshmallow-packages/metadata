@@ -34,7 +34,7 @@ class MetadataCast implements CastsAttributes
         if (! $model->exists) {
             $model->queuedMetadata = [$key => $value];
 
-            return;
+            return $value;
         }
 
         $model->setMetadata($key, $value);
