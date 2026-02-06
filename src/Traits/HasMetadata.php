@@ -12,6 +12,17 @@ trait HasMetadata
 {
     protected array $queuedMetadata = [];
 
+    /**
+     * Initialize the HasMetadata trait.
+     * Adds metadata to eager loading to prevent N+1 queries.
+     */
+    public function initializeHasMetadata(): void
+    {
+        if (config('metadata.eager_load', true)) {
+            $this->with = array_unique(array_merge($this->with ?? [], ['metadata']));
+        }
+    }
+
     public static function getMetadataClassName(): string
     {
         return config('metadata.metadata_model', Metadata::class);
