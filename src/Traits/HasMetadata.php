@@ -18,7 +18,7 @@ trait HasMetadata
      */
     public function initializeHasMetadata(): void
     {
-        if (config('metadata.eager_load', true)) {
+        if (config('metadata.eager_load', false)) {
             $this->with = array_unique(array_merge($this->with ?? [], ['metadata']));
         }
     }

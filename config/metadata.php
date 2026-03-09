@@ -16,5 +16,5 @@ return [
      * Automatically eager load metadata to prevent N+1 queries.
      * Set to false if you prefer to manually eager load metadata.
      */
-    'eager_load' => true,
+    'eager_load' => false,
 ];
